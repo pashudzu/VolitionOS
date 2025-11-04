@@ -1,0 +1,22 @@
+[workspace]
+members = [
+    "crates/*",
+]
+resolver = "2"
+
+[package]
+name = "volitionos"
+edition = "2021"
+authors = ["pashudzu (Pavel) pashudzu@gmail.com"]
+readme = "README.md"
+license-file = "LICENSE.txt"
+keywords = ["operating-system"]
+
+[[bin]]
+name = "volitionos"
+path = "src/main.rs"
+
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = "s"

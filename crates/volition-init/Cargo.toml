@@ -1,0 +1,3 @@
+[package]
+name = "volition-init"
+edition = "2021"
