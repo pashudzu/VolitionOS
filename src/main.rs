@@ -12,6 +12,14 @@
  * GNU General Public License for more details.
  */
 
-fn main() {
-    
+#![no_std]
+#![no_main]
+
+use volition_init::boot_sequence;
+
+#[no_mangle]
+pub extern "C" fn _start() -> ! {
+    boot_sequence::boot_os()
 }
+
+//TODO: panic handler
