@@ -15,11 +15,41 @@
 #![no_std]
 #![no_main]
 
-use volition_init::boot_sequence;
+use core::fmt::write;
+use core::panic::PanicInfo;
+//use volition_init::boot_sequence;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    boot_sequence::boot_os()
+    let mut output = String::new;
+    fmt::write(&mut output, format_args!("[Valition OS] Hello World!"));
+    //writeln!("Volition OS has loaded");
+    loop {}
+    //boot_sequence::boot_os()
 }
 
-//TODO: panic handler
+// struct HStderr {
+//     buffer: [u8, 512],
+//     buffer_pos: usize,
+// }
+// 
+// impl HStderr  {
+//     pub fn new() -> Self {
+//         HStderr {
+//             buffer: [0;512],
+//             buffer_pos: 0,
+//         }
+//     }
+// }
+
+#[panic_handler]
+pub fn panic(_info: &PanicInfo) -> ! {
+    // let mut host_stderr = HStderr::new();
+
+    let mut output = String::new;
+    fmt::write(&mut output, format_args!("[Valition OS] Panic: {}", _info));
+
+    /* writeln!(host_stderr, "{}", info).ok(); */
+
+    loop {}
+}
