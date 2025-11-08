@@ -1,0 +1,2 @@
+[unstable]
+build_std = ["core", "alloc"]

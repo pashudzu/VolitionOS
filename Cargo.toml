@@ -1,11 +1,13 @@
 [workspace]
 members = [
-    "crates/*",
+    "src/kernel",
+    "src/subsystems/console", 
 ]
 resolver = "2"
 
 [package]
 name = "volitionos"
+version = "0.1.0"
 edition = "2021"
 authors = ["pashudzu (Pavel) pashudzu@gmail.com"]
 readme = "README.md"
@@ -14,9 +16,12 @@ keywords = ["operating-system"]
 
 [[bin]]
 name = "volitionos"
-path = "src/main.rs"
+path = "src/kernel/main.rs"
 
 [profile.release]
 panic = "abort"
 lto = true
 opt-level = "s"
+
+[dependencies]
+fmt = "0.1.0"
